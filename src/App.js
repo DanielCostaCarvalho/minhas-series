@@ -4,6 +4,7 @@ import axios from 'axios'
 import Header from './Header';
 import Generos from './Generos';
 import NovoGenero from './NovoGenero';
+import EditarGenero from './EditarGenero';
 import Home from './Home';
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
       <Header/>
       <Route path='/' exact component={Home}/>
       <Route path='/generos' exact component={Generos}/>
-      <Route path='/generos/novo' component={NovoGenero}/>
+      <Route path='/generos/novo' exact component={NovoGenero}/>
+      <Route path='/generos/:id' exact component={EditarGenero}/>
       <pre>{JSON.stringify(data)}</pre>
     </div>
     </Router>
