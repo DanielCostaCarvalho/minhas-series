@@ -1,16 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Alert } from 'reactstrap';
 import axios from 'axios';
-
-const renderizaLinha = row => {
-    return (
-    <tr key={row.id}>
-        <th scope='row'>{row.id}</th>
-        <td>{row.name}</td>
-        <td><Button outline color='secondary'>Adicionar</Button></td>
-    </tr>
-    )
-}
+import { Link } from 'react-router-dom';
 
 const Generos = () => {
     const [data, setData] = useState([]);
@@ -23,21 +14,43 @@ const Generos = () => {
             })
     }, [])
 
+    const renderizaLinha = row => {
+        return (
+        <tr key={row.id}>
+            <th scope='row'>{row.id}</th>
+            <td>{row.name}</td>
+            <td><Button outline color='secondary' onClick={() => deletarGenero(row.id)}>Deletar</Button></td>
+        </tr>
+        );
+    };
+
+    const deletarGenero = (id) => {
+        axios
+            .delete('/api/genres/' + id)
+            .then(res => {
+                const newData = data.filter(row => {
+                    return row.id !== id;
+                })
+                setData(newData)
+            })
+    };
+
     if(data.length === 0){
         return(
             <div className='container'>
-                <h1>Gêneros</h1>
+                <h1>Gêneros <Button outline color='secondary' tag={Link} to='/generos/novo'>Novo Gênero</Button></h1>
+                <Button outline color='secondary'>Novo Gênero</Button>
                 <Alert color="dark">
                     Você não possui gêneros criados
                 </Alert>
             </div>
-        )
+        );
     }
 
     return (
     <div className='container'>
-    <h1>Gêneros</h1>
-    <table className='table table-striped' >
+    <h1>Gêneros <Button outline color='secondary' tag={Link} to='/generos/novo'>Novo Gênero</Button></h1>
+    <table className='table table-striped table-hover' >
         <thead>
             <tr>
                 <th scope='col'>#</th>

@@ -3,7 +3,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import axios from 'axios'
 import Header from './Header';
 import Generos from './Generos';
-import Home from './Home'
+import NovoGenero from './NovoGenero';
+import Home from './Home';
 
 function App() {
   const [data, setData] = useState({});
@@ -17,7 +18,8 @@ function App() {
     <div className="App">
       <Header/>
       <Route path='/' exact component={Home}/>
-      <Route path='/generos' component={Generos}/>
+      <Route path='/generos' exact component={Generos}/>
+      <Route path='/generos/novo' component={NovoGenero}/>
       <pre>{JSON.stringify(data)}</pre>
     </div>
     </Router>
