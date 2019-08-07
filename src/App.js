@@ -21,7 +21,7 @@ function App() {
       <Route path='/' exact component={Home}/>
       <Route path='/generos' exact component={Generos}/>
       <Route path='/generos/novo' exact component={NovoGenero}/>
-      <Route path='/generos/:id' exact component={EditarGenero}/>
+      <Route path='/generos/editar/:id' exact component={EditarGenero}/>
       <pre>{JSON.stringify(data)}</pre>
     </div>
     </Router>

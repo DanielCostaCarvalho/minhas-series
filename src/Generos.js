@@ -20,7 +20,7 @@ const Generos = () => {
             <th scope='row'>{row.id}</th>
             <td>{row.name}</td>
             <td>
-            <Button outline color='warning' tag={Link} to={'generos/' + row.id}>Editar</Button>
+            <Button outline color='warning' tag={Link} to={'generos/editar/' + row.id}>Editar</Button>
             <Button outline color='danger' onClick={() => deletarGenero(row.id)}>Deletar</Button>
             </td>
         </tr>
@@ -42,7 +42,6 @@ const Generos = () => {
         return(
             <div className='container'>
                 <h1>Gêneros <Button outline color='secondary' tag={Link} to='/generos/novo'>Novo Gênero</Button></h1>
-                <Button outline color='secondary'>Novo Gênero</Button>
                 <Alert color="dark">
                     Você não possui gêneros criados
                 </Alert>
